@@ -18,12 +18,28 @@ use App\Http\Controllers\Api\AuthController;
 
 
   Route::group(['prefix' => 'auth'], function () {
-      Route::post('login', [AuthController::class, 'login']);
-      Route::get('user', [AuthController::class, 'user']);
-      Route::post('register', [AuthController::class, 'register']);
+      Route::group(['prefix' => 'user'],function(){
 
-      Route::group(['middleware' => 'auth:sanctum'], function() {
-        Route::get('logout', [AuthController::class, 'logout']);
+        Route::post('login', [AuthController::class, 'login']);
         Route::get('user', [AuthController::class, 'user']);
+        Route::post('register', [AuthController::class, 'register']);
+
+        Route::group(['middleware' => 'auth:sanctum'], function() {
+          Route::get('logout', [AuthController::class, 'logout']);
+          Route::get('user', [AuthController::class, 'user']);
+        });
       });
+
+
+      // Route::group(['prefix' => 'user'],function(){
+        
+      //   Route::post('login', [AuthController::class, 'login']);
+      //   Route::get('user', [AuthController::class, 'user']);
+      //   Route::post('register', [AuthController::class, 'register']);
+
+      //   Route::group(['middleware' => 'auth:sanctum'], function() {
+      //     Route::get('logout', [AuthController::class, 'logout']);
+      //     Route::get('user', [AuthController::class, 'user']);
+      //   });
+      // })
 });
