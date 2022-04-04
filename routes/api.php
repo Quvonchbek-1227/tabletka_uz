@@ -7,7 +7,7 @@ use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| API Routes second
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
