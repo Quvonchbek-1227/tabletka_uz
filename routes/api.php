@@ -2,8 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\AuthController;
-
+use App\Http\Controllers\Api\User\AuthController;
+use App\Http\Controllers\Api\Admin\AdminController;
+use App\Http\Controllers\Api\Seller\PharmacyController;
+use App\Http\Controllers\Api\Seller\DrugsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,15 +33,26 @@ use App\Http\Controllers\Api\AuthController;
       });
 
 
-      // Route::group(['prefix' => 'user'],function(){
+      Route::group(['prefix' => 'admin'],function(){
         
-      //   Route::post('login', [AuthController::class, 'login']);
-      //   Route::get('user', [AuthController::class, 'user']);
-      //   Route::post('register', [AuthController::class, 'register']);
+        Route::post('login', [AdminController::class, 'login']);
+        Route::get('user', [AdminController::class, 'user']);
+        Route::post('register', [AdminController::class, 'register']);
 
-      //   Route::group(['middleware' => 'auth:sanctum'], function() {
-      //     Route::get('logout', [AuthController::class, 'logout']);
-      //     Route::get('user', [AuthController::class, 'user']);
-      //   });
-      // })
+        Route::group(['middleware' => 'auth:sanctum'], function() {
+          Route::get('logout', [AdminController::class, 'logout']);
+          Route::get('user', [AdminController::class, 'user']);
+        });
+      });
+
+
+        Route::group(['middleware' => 'auth:sanctum'], function() {
+
+          Route::resource('pharmacy',PharmacyController::class);
+          Route::resource('drugs',DrugsController::class);
+          
+          
+        });
+
+
 });

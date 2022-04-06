@@ -1,31 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Validator;
 
-// 'remember_me' => 'boolean'
-
-class AuthController extends Controller
+class AdminController extends Controller
 {
     public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
             'full_name' => 'required|string',
-            'telephone' => 'required|string|unique:users',
-            'adres' => 'required|string',
-            'email'=>'required|string|unique:users',
+            'telephone' => 'required|string|unique:admins',
+            'email'=>'required|string|unique:admins',
             'password'=>'required|string',
-            'region'=>'required|string',
             'c_password' => 'required|same:password'
         ]);
 
-        $user = new User([
+        $admin = new Admin([
             'name'  => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
@@ -35,12 +31,12 @@ class AuthController extends Controller
             'region' => $request->region,
         ]);
 
-        if($user->save()){
-            $tokenResult = $user->createToken('myapptoken');
+        if($admin->save()){
+            $tokenResult = $admin->createToken('myapptoken');
             $token = $tokenResult->plainTextToken;
 
             return response()->json([
-            'message' => 'Successfully created user!',
+            'message' => 'Successfully created admin!',
             'accessToken'=> $token,
             ],201);
         }
@@ -64,8 +60,8 @@ class AuthController extends Controller
                   ],401);
               }
 
-              $user = $request->user();
-              $tokenResult = $user->createToken('myapptoken');
+              $admin = $request->user();
+              $tokenResult = $admin->createToken('myapptoken');
               $token = $tokenResult->plainTextToken;
 
               return response()->json([

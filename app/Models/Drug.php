@@ -5,19 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pharmacy extends Model
+class Drug extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
-        'work_time',
-        'region',
-        'adress',
-        'ip_adress',
-        'telefon',
+        'manual',
         'img',
+        'unit',
         'description',
-        'arentr',
-        'id_seller'
     ];
 }
