@@ -45,14 +45,15 @@ use App\Http\Controllers\Api\Seller\DrugsController;
         });
       });
 
-
-        Route::group(['middleware' => 'auth:sanctum'], function() {
-
-          Route::resource('pharmacy',PharmacyController::class);
-          Route::resource('drugs',DrugsController::class);
-          
-          
-        });
-
-
 });
+
+Route::group(['middleware' => 'auth:sanctum'], function() {
+
+  Route::resource('pharmacy',PharmacyController::class);
+  Route::resource('drugs',DrugsController::class);
+  
+  
+});
+
+
+
