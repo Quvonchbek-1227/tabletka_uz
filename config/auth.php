@@ -17,10 +17,6 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-    'admin' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Admin::class,
-    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -53,6 +49,10 @@ return [
         'admin' => [
             'driver ' => 'session',
             'provider' => 'admins',
+        ],
+        'seller' => [
+            'driver ' => 'session',
+            'provider' => 'sellers',
         ],
     ],
 
@@ -88,6 +88,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
+        'sellers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Seller::class,
+        ],
     ],
 
     /*
@@ -112,9 +116,10 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'admins'=>[
-            'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
+        'sellers' => [
+            'provider' => 'sellers',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
 

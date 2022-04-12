@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\User\AuthController;
 use App\Http\Controllers\Api\Admin\AdminController;
 use App\Http\Controllers\Api\Seller\PharmacyController;
 use App\Http\Controllers\Api\Seller\DrugsController;
+use App\Http\Controllers\Api\Seller\SellerAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,16 +37,29 @@ use App\Http\Controllers\Api\Seller\DrugsController;
       Route::group(['prefix' => 'admin'],function(){
         
         Route::post('login', [AdminController::class, 'login']);
-        Route::get('user', [AdminController::class, 'user']);
         Route::post('register', [AdminController::class, 'register']);
 
         Route::group(['middleware' => 'auth:sanctum'], function() {
           Route::get('logout', [AdminController::class, 'logout']);
-          Route::get('user', [AdminController::class, 'user']);
+          Route::get('admin', [AdminController::class, 'admin']);
         });
       });
 
-});
+      Route::group(['prefix' => 'seller'],function(){
+        
+        Route::post('login', [SellerAuthController::class, 'login']);
+        Route::post('register', [SellerAuthController::class, 'register']);
+
+        Route::group(['middleware' => 'auth:sanctum'], function() {
+
+          Route::get('logout', [SellerAuthController::class, 'logout']);
+          Route::get('seller', [SellerAuthController::class, 'seller']);
+          
+        });
+        
+      });
+
+  });
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
 

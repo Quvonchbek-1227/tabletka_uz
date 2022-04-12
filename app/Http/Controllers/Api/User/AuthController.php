@@ -36,7 +36,7 @@ class AuthController extends Controller
         ]);
 
         if($user->save()){
-            $tokenResult = $user->createToken('myapptoken');
+            $tokenResult = $user->createToken('myapptokenuser');
             $token = $tokenResult->plainTextToken;
 
             return response()->json([
@@ -65,7 +65,7 @@ class AuthController extends Controller
               }
 
               $user = $request->user();
-              $tokenResult = $user->createToken('myapptoken');
+              $tokenResult = $user->createToken('myapptokenuser');
               $token = $tokenResult->plainTextToken;
 
               return response()->json([

@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "onecentlin.laravel5-snippets"
+        "onecentlin.laravel5-snippets",
+        "steoates.autoimport"
     ]
 }

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use Illuminate\Support\Facades\Hash;
+
 
 class AdminController extends Controller
 {
@@ -32,7 +34,7 @@ class AdminController extends Controller
         ]);
 
         if($admin->save()){
-            $tokenResult = $admin->createToken('myapptoken');
+            $tokenResult = $admin->createToken('myapptokenadmin');
             $token = $tokenResult->plainTextToken;
 
             return response()->json([
@@ -52,16 +54,16 @@ class AdminController extends Controller
                   'password' => 'required|string',
               ]);
 
-              $credentials = request(['email','password']);
-              if(!Auth::attempt($credentials))
+              $admin = Admin::where('email',$request->email)->first();
+
+              if(!$admin || !Hash::check($request->password, $admin->password))
               {
                   return response()->json([
                       'message' => 'Unauthorized'
                   ],401);
               }
 
-              $admin = $request->user();
-              $tokenResult = $admin->createToken('myapptoken');
+              $tokenResult = $admin->createToken('myapptokenadmin');
               $token = $tokenResult->plainTextToken;
 
               return response()->json([
@@ -70,7 +72,7 @@ class AdminController extends Controller
               ]);
         }
 
-        public function user(Request $request)
+        public function admin(Request $request)
         {
             return response()->json($request->user());
         }
