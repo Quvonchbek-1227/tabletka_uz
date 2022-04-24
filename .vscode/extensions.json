@@ -1,6 +1,9 @@
 {
     "recommendations": [
         "onecentlin.laravel5-snippets",
-        "steoates.autoimport"
+        "mehedidracula.php-namespace-resolver",
+        "xdebug.php-debug",
+        "onecentlin.laravel-blade",
+        "shufo.vscode-blade-formatter"
     ]
 }

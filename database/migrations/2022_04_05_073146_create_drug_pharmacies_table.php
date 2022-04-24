@@ -15,7 +15,17 @@ class CreateDrugPharmaciesTable extends Migration
     {
         Schema::create('drug_pharmacies', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('drug_id');
+            $table->unsignedBigInteger('pharmacy_id');
+            $table->integer('price');
             $table->timestamps();
+
+            $table->foreign('drug_id')->references('id')->on('drugs')
+            ->onDelete('cascade');
+
+            $table->foreign('pharmacy_id')->references('id')->on('pharmacies')
+            ->onDelete('cascade');
+            
         });
     }
 

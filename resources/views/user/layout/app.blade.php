@@ -2,184 +2,165 @@
 <html lang="en">
 
 <head>
-    <title>@yield('title')</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ asset('assets/css/open-iconic-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('assets/css/aos.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('assets/css/ionicons.min.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/jquery.timepicker.css') }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>@yield('title')</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link rel="stylesheet" href="{{ asset('adminpanel/vendor/owl-carousel/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminpanel/vendor/owl-carousel/css/owl.theme.default.min.css') }}">
+    <link href="{{ asset('adminpanel/vendor/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('adminpanel/css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 
 
-    <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/card.css') }}">
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Tablet<span>KA</span></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
 
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="index.html" class="nav-link">Bas Bet</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Biz Haqimizda</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Xizmetlerimiz</a></li>
-                    <li class="nav-item"><a href="searcher.html" class="nav-link">Da`ri Izlew</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Da`rixanalar</a></li>
-                    <!-- <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>-->
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li> 
-                    <li class="nav-item"><a href="#" class="nav-link">Kiriw</a></li>
-                    <!-- <li class="nav-item cta"><a href="#" class="nav-link" data-toggle="modal"
-                            data-target="#modalRequest"><span>Da`rixana Jaratiw</span></a>
-                    </li> -->
-                </ul>
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="{{ route('user.home') }}" class="brand-logo" style="background-color: white">
+                <img class="brand-title" src="{{ asset('logo/logo.png') }}" alt="">
+                {{-- <img class="logo-compact" src="./images/logo-text.png" alt="">
+                <img class="brand-title" src="./images/logo-text.png" alt=""> --}}
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
             </div>
         </div>
-    </nav>
-    <!-- END nav -->
+        <!--**********************************
+            Nav header end
+        ***********************************-->
 
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            Assalawm A`leykum {{ Auth::user()->name }}
+                        </div>
 
-
-
-    @yield('content')
-
-
-
-
-
-
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-3">
-                    <!-- <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">DentaCare.</h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    </div> -->
-                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft ">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                    </ul>
-                </div>
-                <!-- <div class="col-md-2">
-                    <div class="ftco-footer-widget mb-4 ml-md-5">
-                        <h2 class="ftco-heading-2">Quick Links</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">About</a></li>
-                            <li><a href="#" class="py-2 d-block">Features</a></li>
-                            <li><a href="#" class="py-2 d-block">Projects</a></li>
-                            <li><a href="#" class="py-2 d-block">Blog</a></li>
-                            <li><a href="#" class="py-2 d-block">Contact</a></li>
+                        <ul class="navbar-nav header-right">
+                            
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-account"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="./app-profile.html" class="dropdown-item">
+                                        <i class="icon-user"></i>
+                                        <span class="ml-2">Profile </span>
+                                    </a>
+                                    <a href="./app-profile.html" class="dropdown-item">
+                                        <i class="icon-user"></i>
+                                        <span class="ml-2">{{ Auth::user()->name }}</span>
+                                    </a>
+                                    <a href="./email-inbox.html" class="dropdown-item">
+                                        <i class="icon-envelope-open"></i>
+                                        <span class="ml-2">Inbox </span>
+                                    </a>
+                                    <a href="{{ route('user.logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();
+                                    ">
+                                        <i class="icon-key"></i>
+                                        <span class="ml-2">Logout </span>
+                                        <form action="{{ route('user.logout') }}" id="logout-form" class="d-none" method="post">@csrf</form>
+                                    </a>
+                                </div>
+                            </li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-md-4 pr-md-4">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Recent Blog</h2>
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
-                            <div class="text">
-                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                                <div class="meta">
-                                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
-                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
-                            <div class="text">
-                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                                <div class="meta">
-                                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
-                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="col-md-3">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Office</h2>
-                        <div class="block-23 mb-3">
-                            <ul>
-                                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
+                </nav>
             </div>
-            <!-- <div class="row">
-                <div class="col-md-12 text-center">
-
-                    <p>
-                        Copyright &copy;
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                    </p>
-                </div>
-            </div> -->
         </div>
-    </footer>
+
+        @include('user.includes.sidebar')
 
 
 
-    <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                stroke="#F96D00" />
-        </svg>
+        @yield('content')
+
+
+
+
+        <div class="footer">
+            <div class="copyright text-center">
+                <p>
+                    <h4>TABLETKA.UZ</h4>
+                </p>
+            </div>
+        </div>
+
+
+
     </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="{{ asset('adminpanel/vendor/global/global.min.js') }}"></script>
+    <script src="{{ asset('adminpanel/js/quixnav-init.js') }}"></script>
+    <script src="{{ asset('adminpanel/js/custom.min.js') }}"></script>
 
 
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery-migrate-3.0.1.min.js') }}"></script>
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.easing.1.3.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.stellar.min.js') }}"></script>
-    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/aos.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.animateNumber.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.timepicker.min.js') }}"></script>
-    <script src="{{ asset('assets/js/scrollax.min.js') }}"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="{{ asset('assets/js/google-map.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <!-- Vectormap -->
+    <script src="{{ asset('adminpanel/vendor/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('adminpanel/vendor/morris/morris.min.js') }}"></script>
 
+
+    <script src="{{ asset('adminpanel/vendor/circle-progress/circle-progress.min.js') }}"></script>
+    <script src="{{ asset('adminpanel/vendor/chart.js/Chart.bundle.min.js') }}"></script>
+
+    <script src="{{ asset('adminpanel/vendor/gaugeJS/dist/gauge.min.js') }}"></script>
+
+
+    <!-- Owl Carousel -->
+    <script src="{{ asset('adminpanel/vendor/owl-carousel/js/owl.carousel.min.js') }}"></script>
+
+    <!-- Counter Up -->
+    <script src="{{ asset('adminpanel/vendor/jqvmap/js/jquery.vmap.min.js') }}"></script>
+    <script src="{{ asset('adminpanel/vendor/jqvmap/js/jquery.vmap.usa.js') }}"></script>
+    <script src="{{ asset('adminpanel/vendor/jquery.counterup/jquery.counterup.min.js') }}"></script>
+
+
+    <script src="{{ asset('adminpanel/js/dashboard/dashboard-1.js') }}"></script>
+    
 </body>
 
 </html>

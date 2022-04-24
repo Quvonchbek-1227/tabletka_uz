@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Drug;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pharmacy extends Model
 {
@@ -20,4 +21,8 @@ class Pharmacy extends Model
         'arentr',
         'id_seller'
     ];
+
+    public function drugs(){
+        $this->belongsToMany(Drug::class,'drug_pharmacies');
+    }
 }

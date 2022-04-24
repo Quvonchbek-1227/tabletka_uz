@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class drug_pharmacy extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['id_user','id_pharmacy'];
+    public $timestamps = false;
+
 }
