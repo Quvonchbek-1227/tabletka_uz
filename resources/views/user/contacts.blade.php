@@ -1,4 +1,4 @@
-@extends('user.layout.app')
+@extends('user.layout.app1')
 
 @section('title')
     Baylanis Bo`limi!
